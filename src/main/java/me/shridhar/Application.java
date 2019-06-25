@@ -7,14 +7,18 @@ import java.io.IOException;
 
 public class Application {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         ExternalSorter sorter = new ExternalSorter();
         ResourceLoader loader = new ResourceLoader();
 
-        File inputFile = loader.getResource("input.txt");
-        File sortedFile = sorter.sort(inputFile);
+        try {
+            File inputFile = loader.getResource("input-big.txt");
+            File sortedFile = sorter.sort(inputFile);
 
-        String path = System.getProperty("user.dir") + "/src/main/resources/sorted.txt";
-        loader.writeResource(sortedFile, path);
+            String path = System.getProperty("user.dir") + "/src/main/resources/sorted-big.txt";
+            loader.writeResource(sortedFile, path);
+        } catch (IOException | IllegalArgumentException exe) {
+            exe.printStackTrace();
+        }
     }
 }

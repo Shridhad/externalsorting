@@ -8,9 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 class ExternalSorter {
-    private final int MAX_NUMBERS_PER_FILE = 100;
+    private final int MAX_NUMBERS_PER_FILE = 10000000;
     private final Writer writer;
 
     ExternalSorter() {
@@ -72,8 +73,13 @@ class ExternalSorter {
         while (files.size() > 1) {
             File file1 = files.remove(0);
             File file2 = files.remove(0);
-            File newFile = mergeFiles(file1, file2);
-            files.add(newFile);
+            Optional<File> newFile = mergeFiles(file1, file2);
+            newFile.ifPresent(files::add);
+
+            // Delete merged files, we no longer need them.
+            file1.delete();
+            file2.delete();
+            System.gc();
         }
         return files.get(0);
     }
@@ -85,7 +91,7 @@ class ExternalSorter {
      * @param file2     Second file
      * @return file     Returns merged file
      */
-    private File mergeFiles(File file1, File file2) {
+    private Optional<File> mergeFiles(File file1, File file2) {
         try {
             NumberReader reader1 = new NumberReader(file1);
             NumberReader reader2 = new NumberReader(file2);
@@ -110,11 +116,11 @@ class ExternalSorter {
             writer.close();
             reader1.close();
             reader2.close();
-            return writer.getFile();
+            return Optional.ofNullable(writer.getFile());
         } catch (IOException exe) {
             exe.printStackTrace();
         }
 
-        return null;
+        return Optional.empty();
     }
 }

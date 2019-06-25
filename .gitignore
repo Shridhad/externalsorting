@@ -4,6 +4,7 @@ target
 src/main/resources/sorted.txt
 .DS_Store
 build
+out
 .gradle
 gradle-app.setting
 src/main/resources/input-big.txt
