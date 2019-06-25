@@ -13,7 +13,7 @@ file which has the sorted content of the input file.
 
 ### Execution
 
-* Clone the repository and run `mvn install` to install dependencies
+* Clone the repository and run `gradle build` to install dependencies
 * Import the project into IDE and run `Application`
 
 
