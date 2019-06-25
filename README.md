@@ -23,3 +23,16 @@ file which has the sorted content of the input file.
 * You can run the script multiple times to add more numbers in same file
 * To sort this file you need to make small change in `Application.java:14`, to change the input file name
 
+
+#### Performance Optimization 
+
+- Implement K-Way merge using `PriorityQueue` to merge the tempFiles. All tempFiles will merged at once. 
+- Parallelize the split and sorting of tempFiles
+- Dynamically decide the size of tempFiles based of available memory
+
+
+### Improvements
+
+- Take input file and output files as arguments  
+- Log the progress on console, at each stage
+- Summary - Total time taken, total temp files created, count of numbers
