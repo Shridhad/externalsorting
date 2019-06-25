@@ -2,3 +2,6 @@
 *.iml
 target
 src/main/resources/sorted.txt
+.DS_Store
+src/main/resources/input-big.txt
+src/main/resources/sorted-big.txt
