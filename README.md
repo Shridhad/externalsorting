@@ -19,9 +19,9 @@ file which has the sorted content of the input file.
 
 #### Generate big data
 
-* running `./generate.sh` should generate `src/main/resources/input-big.txt` file with 50000 numbers
-* You can run the script multiple times to add more numbers in same file
-* To sort this file you need to make small change in `Application.java:14`, to change the input file name
+* Running `sh generate.sh` should generate `src/main/resources/input-big.txt` file with 50000 numbers.
+* You can run the script multiple times to add more numbers in same file.
+* To sort this file you need to make small change in `Application.java:14`, to change the input file name.
 
 
 #### Performance Optimization 
