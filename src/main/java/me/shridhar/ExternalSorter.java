@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Optional;
 
 class ExternalSorter {
-    private final int MAX_NUMBERS_PER_FILE = 10000000;
+    // Fixed number based on trial and error with 100MB memory limit.
+    // TODO: Determine the number dynamically based on available memory.
+    private final int MAX_NUMBERS_PER_FILE = 3000000;
     private final Writer writer;
 
     ExternalSorter() {
